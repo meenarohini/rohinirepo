@@ -1,35 +1,18 @@
 package base;
 
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.After;
-import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
-import util.Configuration;
-
 public class BaseTest {
 	
 	WebDriver driver;
-	@Before
-	public void initialSetUp(Method method){
-		String browserName = Configuration.getBrowser();
-		driver = getDriver(browserName);
-	}
-	
-	@After()
-	public void cleanup(){
-		driver.quit();
-	}
-	
 	public WebDriver getDriver(String browserName){
-		WebDriver driver=null;
 		switch(browserName){
 		case "chrome":
 			System.setProperty("webdriver.chrome.driver", "binaries/chromedriver.exe");
@@ -55,7 +38,7 @@ public class BaseTest {
 		}
 		
 		driver.manage().window().maximize();
-		driver.get(Configuration.getURL());
+		
 		return driver;
 	}
 }

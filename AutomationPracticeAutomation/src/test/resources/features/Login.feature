@@ -1,25 +1,29 @@
+@login
+Feature: Login Feature
 
-@tag
-Feature: Title of your feature
-  I want to use this template for my feature file
+  @login @correct-login
+  Scenario: Correct login
+    Given user open automation practice website
+    When user navigates to login page
+    And enter username as "testautomation@auto.com" and password as "Test@2017" and click on login
+    Then user should be able to login
 
-  @tag1
-  Scenario: Title of your scenario
-    Given I want to write a step with precondition
-    And some other precondition
-    When I complete action
-    And some other action
-    And yet another action
-    Then I validate the outcomes
-    And check more outcomes
+  @login @incorrect-login
+  Scenario: InCorrect login
+    Given user open automation practice website
+    When user navigates to login page
+    And enter username as "testautomation@auto.com" and password as "Test@2023" and click on login
+    Then user should not be able to login
 
-  @tag2
-  Scenario Outline: Title of your scenario outline
-    Given I want to write a step with <name>
-    When I check for the <value> in step
-    Then I verify the <status> in step
+	@login @login-outline
+  Scenario Outline: Login Check using Scenario Outline
+    Given user open automation practice website
+    When user navigates to login page
+    And enter username as "<userName>" and password as "<password>" and click on login
+    Then user login status should "<status>"
 
     Examples: 
-      | name  | value | status  |
-      | name1 |     5 | success |
-      | name2 |     7 | Fail    |
+      | userName                | password   | status |
+      | testautomation@auto.com | Test@2017  | Pass   |
+      | testautomation@auto.com | Test@20523 | Fail   |
+      | tgautomation@auto.com   | Test@223   | Pass   |
