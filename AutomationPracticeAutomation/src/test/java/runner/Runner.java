@@ -6,9 +6,9 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/features/Login.feature", plugin = { "pretty", "html:reports" }, 
+@CucumberOptions(features = "src/test/resources/features", plugin = { "pretty", "html:reports" }, 
 					glue = { "stepdef" }
-					,tags = "@login-outline" 
+					,tags = "@registration" 
 					//,dryRun = true
 				)
 public class Runner {

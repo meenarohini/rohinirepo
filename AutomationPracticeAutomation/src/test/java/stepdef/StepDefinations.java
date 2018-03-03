@@ -9,6 +9,7 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import pages.AccountCreationPage;
 import pages.HomePage;
 import pages.LandingPage;
 import pages.LoginPage;
@@ -20,6 +21,7 @@ public class StepDefinations {
 	LandingPage landingPage;
 	LoginPage loginPage;
 	HomePage homePage;
+	AccountCreationPage accountCreationPage;
 	
 	@Before
 	public void initiate(){
@@ -31,7 +33,7 @@ public class StepDefinations {
 	
 	@After()
 	public void cleanup(){
-		driver.quit();
+		//driver.quit();
 	}
 	
 	@Given("^user open automation practice website$")
@@ -66,6 +68,37 @@ public class StepDefinations {
 	   if(!((status.equalsIgnoreCase("Pass") && homePage.isPageLoaded()) || (status.equalsIgnoreCase("Fail") && !homePage.isPageLoaded()))){
 		   Assert.fail();
 	   }
+	}
+	
+	@When("^user enters an email address as \"([^\"]*)\" and clicks on create account button$")
+	public void user_enters_an_email_address_as_and_clicks_on_create_account_button(String arg1) throws Throwable {
+		accountCreationPage = loginPage.accountCreate(arg1);
+	}
+
+
+	@Then("^user is navigated to registration page$")
+	public void user_is_navigated_to_registration_page() throws Throwable {
+		Assert.assertTrue(accountCreationPage.isPageLoaded());
+	}
+	
+	@When("^user enters title as \"([^\"]*)\"$")
+	public void user_enters_title_as(String arg1) throws Throwable {
+		accountCreationPage.selectTitle(arg1);
+	}
+
+	@When("^user enters first name as \"([^\"]*)\"$")
+	public void user_enters_first_name_as(String fname) throws Throwable {
+	   accountCreationPage.enterFirstName(fname);
+	}
+
+	@When("^user enters last name as \"([^\"]*)\"$")
+	public void user_enters_last_name_as(String lname) throws Throwable {
+		accountCreationPage.enterLastName(lname);
+	}
+
+	@When("^user enters mobile phone as \"([^\"]*)\"$")
+	public void user_enters_mobile_phone(String mobileNo) throws Throwable {
+	   accountCreationPage.enterMobile(mobileNo);
 	}
 	
 }

@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage  extends BasePage{
@@ -30,11 +31,29 @@ public class LoginPage  extends BasePage{
 	@FindBy(id = "SubmitLogin")
 	WebElement submitBtn;
 	
+	@FindBy(id = "email_create")
+	WebElement emailCreateTxtBox;
+	
+	@FindBy(id = "SubmitCreate")
+	WebElement accountCreateBtn;
+	
+	
 	public HomePage login(String userName, String password){
 		emailTxtBox.sendKeys(userName);
 		passwordTxtBox.sendKeys(password);
 		submitBtn.click();
 		return new HomePage(driver);
+	}
+	
+	public AccountCreationPage accountCreate(String email){
+		emailCreateTxtBox.sendKeys(email);
+		accountCreateBtn.click();
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return new AccountCreationPage(driver);
 	}
 
 }
