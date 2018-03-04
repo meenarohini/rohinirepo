@@ -8,7 +8,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/features", plugin = { "pretty", "html:reports" }, 
 					glue = { "stepdef" }
-					,tags = "@registration" 
+					,tags = "@cartAddition" 
 					//,dryRun = true
 				)
 public class Runner {

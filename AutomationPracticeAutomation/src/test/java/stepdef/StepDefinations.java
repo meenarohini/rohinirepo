@@ -23,6 +23,8 @@ public class StepDefinations {
 	HomePage homePage;
 	AccountCreationPage accountCreationPage;
 	
+	int initialCartCount;
+	
 	@Before
 	public void initiate(){
 		Configuration.loadConfiguration();
@@ -100,5 +102,51 @@ public class StepDefinations {
 	public void user_enters_mobile_phone(String mobileNo) throws Throwable {
 	   accountCreationPage.enterMobile(mobileNo);
 	}
+		
+	@Given("^user finds out the no of items added to cart$")
+	public void user_finds_out_the_no_of_items_added_to_cart() throws Throwable {
+		initialCartCount = landingPage.getNumberOfItemsInCart();
+	}
+
+	@When("^user mouse hovers to \"([^\"]*)\" menu$")
+	public void user_mouse_hovers_to_menu(String menuItem) throws Throwable {
+	    landingPage.mouseHoverToMenu(menuItem);
+	}
+
+	@When("^user clicks on \"([^\"]*)\"$")
+	public void user_clicks_on(String subMenuItem) throws Throwable {
+		landingPage.openSubMenuItem(subMenuItem);
+	}
+
+	@Then("^user should be navigated to Evening Dresses page$")
+	public void user_should_be_navigated_to_Evening_Dresses_page() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    
+	}
+
+	@When("^user adds the first item to cart$")
+	public void user_adds_the_first_item_to_cart() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    
+	}
+
+	@Then("^user should get a message as \"([^\"]*)\"$")
+	public void user_should_get_a_message_as(String arg1) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    
+	}
+
+	@When("^user closes the modal box$")
+	public void user_closes_the_modal_box() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    
+	}
+
+	@Then("^an item should be added to cart$")
+	public void an_item_should_be_added_to_cart() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    
+	}
+
 	
 }
