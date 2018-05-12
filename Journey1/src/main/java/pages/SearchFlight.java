@@ -12,6 +12,7 @@ public class SearchFlight extends BasePage{
 	}
 	
 	private String multicitySourceCity1_xpath ="//input[@id='BE_flight_origin_city_1']";
+	//private By variable = By.xpath("ginjofignoijfsogjnsofjg");
 	private String multicitySourceCity2_xpath="//input[@id='BE_flight_origin_city_2']";
 	private String multicityDestinationCity1_xpath="//input[@id='BE_flight_arrival_city_1']";
 	private String multicityDestinationCity2_xpath="//input[@id='BE_flight_arrival_city_2']";	
